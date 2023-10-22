@@ -1,0 +1,21 @@
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .cart {
+    margin-right: 32px;
+  }
+
+  span {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+
+  img {
+    width: 25px;
+    background-color: transparent;
+    border-radius: 25px;
+  }
+}

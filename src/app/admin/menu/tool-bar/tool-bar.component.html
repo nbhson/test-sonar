@@ -1,0 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="center" class="cs-full-height tool-bar">
+  <div fxLayout="column" fxLayoutAlign="space-between" class="cs-full-width">
+    <div fxLayout="row" class="cs-full-width">
+      <div fxLayout="column" class="cs-full-width">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <img [src]="avatar" alt="" class="avatar cs-mt-3 cs-shadow-sm" />
+        </div>
+
+        <div class="mat-headline cs-mt-3">{{ user.name }}</div>
+        <span class="cs-mb-3">({{ user.role }})</span>
+        <div class="cs-mt-3">
+          <button
+            class="cs-full-width cs-border-radius-0"
+            routerLink="/dashboard/category"
+            mat-stroked-button
+            color="primary"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-icon> list_alt</mat-icon> Danh mục
+          </button>
+        </div>
+        <div class="cs-mt-3">
+          <button
+            class="cs-full-width cs-border-radius-0"
+            routerLink="/dashboard/product"
+            mat-stroked-button
+            color="primary"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-icon>horizontal_split</mat-icon> Sản phẩm
+          </button>
+        </div>
+        <div class="cs-mt-3">
+          <button
+            class="cs-full-width cs-border-radius-0"
+            routerLink="/dashboard/user"
+            mat-stroked-button
+            color="primary"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-icon>supervised_user_circle</mat-icon> Người dùng
+          </button>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" class="cs-mt-3">
+      <button (click)="submit()" class="cs-full-width cs-border-radius-0" mat-raised-button color="warn">
+        <mat-icon>reply</mat-icon> Đăng xuất
+      </button>
+    </div>
+  </div>
+</div>

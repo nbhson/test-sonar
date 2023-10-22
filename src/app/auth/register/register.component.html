@@ -1,0 +1,103 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="cs-full-height">
+  <div
+    fxLayout="row"
+    class="cs-full-height cs-container"
+    fxLayoutAlign="center center"
+    fxLayoutAlign.lg="center center"
+    fxLayoutAlign.md="center center"
+    fxLayoutAlign.sm="center center"
+    class="cs-full-width content cs-white-background"
+  >
+    <mat-card
+      class="cs-card cs-shadow-lg card-register"
+      fxFlex="350px"
+      fxFlex.lg="550px"
+      fxFlex.md="450px"
+      fxFlex.sm="350px"
+    >
+      <mat-card-title>Đăng Kí</mat-card-title>
+      <mat-card-subtitle>Tạo tài khoản để bắt đầu miễn phí nhé!</mat-card-subtitle>
+      <form [formGroup]="form">
+        <mat-form-field class="cs-full-width" appearance="outline">
+          <mat-label>Tên tài khoản</mat-label>
+          <input
+            type="text"
+            [(ngModel)]="user.userName"
+            autocomplete="off"
+            matInput
+            placeholder="Nhập tên tài khoản"
+            formControlName="userName"
+            required
+          />
+          <mat-error *ngIf="f['userName'].errors">
+            <div *ngIf="f['userName'].errors['required']">Tên tài khoản là bắt buộc!</div>
+            <div *ngIf="f['userName'].errors['pattern']">Tên tài khoản không chứa kí tự đặc biệt!</div>
+            <div *ngIf="f['userName'].errors['minlength']">Độ dài tên tài khoản quá ngắn!</div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="cs-full-width" appearance="outline">
+          <mat-label>Tên của bạn</mat-label>
+          <input
+            type="text"
+            [(ngModel)]="user.name"
+            autocomplete="off"
+            matInput
+            placeholder="Nhập tên của bạn"
+            formControlName="name"
+            required
+          />
+          <mat-error *ngIf="f['name'].errors">
+            <div *ngIf="f['name'].errors['required']">Hãy cho biết tên của bạn!</div>
+            <div *ngIf="f['name'].errors['minlength']">Tên quá ngắn!</div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="cs-full-width" appearance="outline">
+          <mat-label>Mật khẩu</mat-label>
+          <input
+            type="password"
+            [(ngModel)]="user.password"
+            autocomplete="off"
+            matInput
+            placeholder="Nhập mật khẩu"
+            formControlName="password"
+            #passwordInput
+            required
+          />
+          <mat-icon matSuffix (click)="togglePassword()" class="eye">remove_red_eye</mat-icon>
+          <mat-error *ngIf="f['password'].errors">
+            <div *ngIf="f['password'].errors['required']">Mật khẩu là bắt buộc!</div>
+            <div *ngIf="f['password'].errors['minlength']">Mật khẩu quá ngắn!</div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="cs-full-width" appearance="outline">
+          <mat-label>Nhập lại mật khẩu</mat-label>
+          <input
+            type="password"
+            [(ngModel)]="rePassword"
+            autocomplete="off"
+            matInput
+            placeholder="Nhập lại mật khẩu"
+            formControlName="rePassword"
+            required
+          />
+          <mat-error *ngIf="f['rePassword'].errors">
+            <div *ngIf="f['rePassword'].errors['required']">Mật khẩu là bắt buộc!</div>
+            <div *ngIf="f['rePassword'].errors['invalid']">Mật khẩu nhập lại không giống nhau!</div>
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="errMsg || loading">
+          <div class="cs-pt-1 cs-pb-3">
+            <app-error-message [loading]="loading" [errMsg]="errMsg"></app-error-message>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <button [disabled]="loading" mat-raised-button color="primary" (click)="submit()">Đăng kí</button>
+          <div class="cs-pl-2">
+            Đã có tài khoản?
+            <a routerLink="/auth/login" class="cs-a-link">Đăng nhập</a>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

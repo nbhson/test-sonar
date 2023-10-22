@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+  <h2 mat-dialog-title>Sửa danh mục</h2>
+  <mat-dialog-content>
+    <mat-form-field class="cs-full-width" appearance="outline">
+      <mat-label>Tên danh mục</mat-label>
+      <input
+        type="text"
+        required
+        [(ngModel)]="categoryClone.name"
+        autocomplete="off"
+        matInput
+        placeholder="Nhập tên danh mục"
+        formControlName="name"
+      />
+      <mat-error *ngIf="f['name'].errors">
+        <div *ngIf="f['name'].errors['required']">Tên danh mục là bắt buộc!</div>
+        <div *ngIf="f['name'].errors['minlength']">Tên danh mục quá ngắn!</div>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="cs-mb-3" fxLayout="row" fxLayoutAlign="start center">
+      <input hidden (change)="onFileSelected()" accept="image/*" #fileInput name="image" type="file" id="file" />
+      <button class="cs-mr-3" type="button" mat-raised-button (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon> Choose File
+      </button>
+      <mat-error *ngIf="categoryClone.image === ''"> Hình ảnh là bắt buộc! </mat-error>
+    </div>
+
+    <div fxLayout="row" *ngIf="categoryClone.image">
+      <img [src]="categoryClone.image" alt="" class="cs-full-width cs-shadow-sm" />
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center" class="cs-pt-3 cs-pb-3">
+    <div fxLayout="column">
+      <app-error-message *ngIf="errMsg || loading" [loading]="loading" [errMsg]="errMsg"></app-error-message>
+    </div>
+
+    <div>
+      <button mat-button mat-dialog-close>Đóng</button>
+      <button mat-button mat-stroked-button color="primary" [disabled]="categoryClone.image === ''" (click)="submit()">
+        Chỉnh sửa
+      </button>
+    </div>
+  </mat-dialog-actions>
+</form>

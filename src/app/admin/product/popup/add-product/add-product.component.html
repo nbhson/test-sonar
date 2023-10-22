@@ -1,0 +1,85 @@
+<form [formGroup]="form">
+  <h2 mat-dialog-title>Thêm sản phẩm</h2>
+  <mat-dialog-content>
+    <mat-form-field class="cs-full-width" appearance="outline">
+      <mat-label>Tên sản phẩm</mat-label>
+      <input
+        type="text"
+        required
+        [(ngModel)]="product.name"
+        autocomplete="off"
+        matInput
+        placeholder="Nhập tên sản phẩm"
+        formControlName="name"
+      />
+      <mat-error *ngIf="f['name'].errors">
+        <div *ngIf="f['name'].errors['required']">Tên sản phẩm là bắt buộc!</div>
+        <div *ngIf="f['name'].errors['minlength']">Tên sản phẩm quá ngắn!</div>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="cs-full-width" appearance="outline">
+      <mat-label>Giá</mat-label>
+      <input
+        type="number"
+        required
+        [(ngModel)]="product.price"
+        autocomplete="off"
+        matInput
+        placeholder="Nhập giá sản phẩm"
+        formControlName="price"
+      />
+      <mat-error *ngIf="f['price'].errors">
+        <div *ngIf="f['price'].errors['required']">Giá sản phẩm là bắt buộc!</div>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="cs-full-width" appearance="outline">
+      <mat-label>Mô tả</mat-label>
+      <textarea
+        type="text"
+        required
+        [(ngModel)]="product.description"
+        autocomplete="off"
+        matInput
+        placeholder="Nhập mô tả sản phẩm"
+        formControlName="description"
+      ></textarea>
+      <mat-error *ngIf="f['description'].errors">
+        <div *ngIf="f['description'].errors['required']">Mô tả sản phẩm là bắt buộc!</div>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="cs-full-width" appearance="outline">
+      <mat-label>Danh mục của sản phẩm</mat-label>
+      <mat-select formControlName="categoryId" [(ngModel)]="product.categoryId">
+        <mat-option *ngFor="let category of data.categories" [value]="category._id">{{ category.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="cs-mb-3" fxLayout="row" fxLayoutAlign="start center">
+      <input hidden (change)="onFileSelected()" accept="image/*" #fileInput name="image" type="file" id="file" />
+      <button class="cs-mr-3" type="button" mat-raised-button (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon> Choose File
+      </button>
+      <mat-error *ngIf="product.image === ''"> Hình ảnh là bắt buộc! </mat-error>
+    </div>
+
+    <div fxLayout="row" *ngIf="product.image">
+      <img [src]="product.image" alt="" class="cs-full-width cs-shadow-sm" />
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center" class="cs-pt-3 cs-pb-3">
+    <div fxLayout="column">
+      <app-error-message *ngIf="errMsg || loading" [loading]="loading" [errMsg]="errMsg"></app-error-message>
+    </div>
+
+    <div>
+      <button mat-button mat-dialog-close>Đóng</button>
+      <button mat-button mat-stroked-button color="primary" [disabled]="product.image === ''" (click)="submit()">
+        Thêm mới
+      </button>
+    </div>
+  </mat-dialog-actions>
+</form>

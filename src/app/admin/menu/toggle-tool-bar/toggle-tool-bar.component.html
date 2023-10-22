@@ -1,0 +1,24 @@
+<div
+  fxLayout
+  fxLayoutAlign="center center"
+  class="btn-toggle"
+  mat-raised-button
+  matTooltip="Đóng slide bar"
+  matTooltipPosition="below"
+  *ngIf="opened"
+  (click)="openedSide()"
+>
+  <mat-icon>chevron_left</mat-icon>
+</div>
+<div
+  fxLayout
+  fxLayoutAlign="center center"
+  class="btn-toggle"
+  matTooltip="Mở slide bar"
+  matTooltipPosition="below"
+  mat-raised-button
+  *ngIf="!opened"
+  (click)="openedSide()"
+>
+  <mat-icon>chevron_right</mat-icon>
+</div>

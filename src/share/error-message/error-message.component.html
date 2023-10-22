@@ -1,0 +1,7 @@
+<div *ngIf="loading; else showErrMsg" fxLayout="row" fxLayoutAlign="start center">
+  <mat-spinner [diameter]="20"></mat-spinner>
+  <span class="cs-pl-1">Đang xử lí yêu cầu của bạn...!</span>
+</div>
+<ng-template #showErrMsg>
+  <div class="cs-error-color">{{ errMsg }}</div>
+</ng-template>

@@ -1,0 +1,75 @@
+.cs-full-height {
+  height: 100%;
+}
+.cs-full-width {
+  width: 100%;
+}
+.cs-card {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.075);
+}
+.cs-shadow-sm {
+  box-shadow: 0 0.14rem 0.24rem rgba(0, 0, 0, 0.075) !important;
+}
+.cs-shadow-lg {
+  box-shadow: 0 0.28rem 0.48rem rgba(0, 0, 0, 0.095) !important;
+}
+.cs-container {
+  padding: 0 144px;
+}
+.cs-a-link {
+  color: inherit;
+}
+.mat-headline {
+  margin: 0;
+  padding: 0;
+}
+.mat-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+.cs-table {
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+.cs-relative {
+  position: relative !important;
+}
+.cs-absolute {
+  position: absolute !important;
+}
+
+.cs-table-content {
+  position: relative;
+  .cs-table-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+  }
+}
+.cs-table-paginate {
+  border-top: 1px solid #e0e0e0;
+}
+.cs-popup {
+  text-decoration: underline;
+  color: rgba(0, 0, 255, 0.5);
+  cursor: pointer;
+}
+.cs-add-padding-input {
+  padding-bottom: 1.25em;
+}
+.cs-input-style-sm {
+  font-size: 12px;
+}
+.cs-border-radius-0 {
+  border-radius: 0 !important;
+}
+.cs-head-tool-bar {
+  height: 48px;
+}
+.cs-container {
+  max-width: 80%;
+}

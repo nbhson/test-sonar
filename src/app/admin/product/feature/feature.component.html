@@ -1,0 +1,40 @@
+<mat-accordion>
+  <mat-expansion-panel class="mat-elevation-z0 cs-shadow-sm" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title><mat-icon>dashboard</mat-icon> Tính năng</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+      <div fxLayout="column" fxFlex class="cs-input-style-sm">
+        <mat-form-field appearance="outline" class="cs-shadow-sm">
+          <mat-label>Tìm kiếm</mat-label>
+          <input matInput type="text" placeholder="Nhập tìm kiếm..." autocomplete="off" (keyup)="applyFilter($event)" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <div class="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+          <span class="cs-add-padding-input">
+            <mat-button-toggle-group
+              class="cs-shadow-sm"
+              name="fontStyle"
+              aria-label="Font Style"
+              [value]="selectedFilter"
+              (change)="onToggleChange($event)"
+            >
+              <mat-button-toggle value="all">Tất cả</mat-button-toggle>
+              <mat-button-toggle value="toDay">Hôm nay</mat-button-toggle>
+              <mat-button-toggle value="thisWeek">Trong tuần này</mat-button-toggle>
+              <mat-button-toggle value="thisMonth">Trong tháng này</mat-button-toggle>
+            </mat-button-toggle-group>
+          </span>
+          <span class="cs-add-padding-input">
+            <button class="btn-add" mat-raised-button color="primary" (click)="openAddDialog()">
+              <mat-icon>add_circle</mat-icon> Thêm mới
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

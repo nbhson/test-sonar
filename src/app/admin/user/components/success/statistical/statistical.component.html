@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutGap="16px">
+  <div fxLayout="column" fxFlex="50%">
+    <app-box header="Thống kê" [_fxLayoutAlign]="'space-between center'">
+      <div>Tổng: {{ admin + user }}</div>
+      <div>Admins: {{ admin }}</div>
+      <div>Users: {{ user }}</div>
+    </app-box>
+  </div>
+  <div fxLayout="column" fxFlex="50%">
+    <app-box header="Tìm kiếm" _fxLayoutAlign="center center">
+      <input (keyup)="applyFilter($event)" type="text" autocomplete="off" matInput placeholder="Nhập tìm kiếm..." />
+    </app-box>
+  </div>
+</div>

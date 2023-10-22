@@ -1,0 +1,37 @@
+<div class="cs-mt-4">
+  <app-box header="Danh mục">
+    <div *ngIf="isCategoriesPage; else asHome">
+      <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div *ngFor="let category of categories">
+          <mat-card class="card-category cs-shadow-sm" style="width: 250px">
+            <img mat-card-image [src]="category.image" />
+            <mat-card-content>
+              <h3>{{ category.name }}</h3>
+            </mat-card-content>
+            <mat-card-actions>
+              <a (click)="navigate(category._id)" mat-raised-button color="primary">Chi Tiết</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <ng-template #asHome>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div *ngFor="let category of categories | slice: 0:4">
+          <mat-card class="card-category cs-shadow-sm" style="width: 250px">
+            <img mat-card-image [src]="category.image" />
+            <mat-card-content>
+              <h3>{{ category.name }}</h3>
+            </mat-card-content>
+            <mat-card-actions>
+              <a (click)="navigate(category._id)" mat-raised-button color="primary">Chi Tiết</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <div style="padding: 16px 16px" fxLayout fxLayoutAlign="end center">
+        <a routerLink="categories" class="more">>> Xem tất cả</a>
+      </div>
+    </ng-template>
+  </app-box>
+</div>

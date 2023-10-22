@@ -1,0 +1,44 @@
+<div fxLayout="row" class="cs-full-height">
+  <div fxFlex fxLayout="column" class="content">
+    <!-- Toggle -->
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="cs-shadow-sm cs-white-background">
+      <span></span>
+      <span
+        class="cs-mr-3 mat-headline cs-head-tool-bar"
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="16px"
+      >
+        <span>Quản lí danh mục</span>
+        <mat-icon matTooltip="Refresh" matTooltipPosition="below" class="cs-icon" (click)="getAllCategory()"
+          >refresh</mat-icon
+        >
+      </span>
+    </div>
+    <!-- Progress bar -->
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <!-- Content -->
+    <div fxLayout="row" fxFlex>
+      <div fxLayout="column" class="cs-p-3 cs-full-width">
+        <div fxLayout="row" fxFlex fxFlex="0 1 auto">
+          <app-feature
+            (addCategory)="addCategory($event)"
+            [categoriesClone]="categoriesClone"
+            [dataSource]="dataSource"
+            class="cs-full-width cs-mb-3"
+          ></app-feature>
+        </div>
+        <div fxLayout="row" fxFlex fxFlex="1 1 auto">
+          <app-table
+            (dataSourceChanges)="dataSourceChanges($event)"
+            [triggerUpdateDataSource]="triggerUpdateDataSource"
+            [loading]="loading"
+            [categories]="categories"
+            [errMsg]="errMsg"
+            class="cs-full-width"
+          ></app-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

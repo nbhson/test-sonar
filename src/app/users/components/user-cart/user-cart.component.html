@@ -1,0 +1,24 @@
+<div fxLayout="row" class="user">
+  <mat-icon color="primary" class="cart" matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon>
+
+  <div [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center">
+    <span>{{ user.name }}</span>
+    <img [src]="user.avatar" alt="" srcset="" />
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>how_to_reg</mat-icon>
+    <span>Tài khoản của tôi</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>card_giftcard</mat-icon>
+    <span>Đơn mua</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>reply</mat-icon>
+    <span>Đăng xuất</span>
+  </button>
+</mat-menu>

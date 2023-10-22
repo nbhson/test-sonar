@@ -1,0 +1,28 @@
+<div fxLayout class="product">
+  <div style="width: 30%" fxLayout="column">
+    <img src="{{ product.image }}" alt="" />
+
+    <div fxLayout fxLayoutAlign="space-between center" class="cs-mt-4">
+      <h1 class="cs-m-0">{{ product.name }}</h1>
+      <div>
+        <mat-icon
+          style="font-size: 28px"
+          color="warn"
+          matTooltip="Thêm vào giỏ hàng"
+          matTooltipPosition="above"
+          class="cs-mr-3"
+          >add_shopping_cart</mat-icon
+        >
+        <mat-icon style="font-size: 28px" color="primary" matTooltip="Mua ngay" matTooltipPosition="above"
+          >credit_card</mat-icon
+        >
+      </div>
+    </div>
+    <div fxLayout class="cs-mt-4">
+      <span class="price">{{ displayPrice(product.price) }}</span>
+    </div>
+  </div>
+  <div style="width: 70%" class="cs-pl-3" fxLayout="column">
+    {{ product.description }}
+  </div>
+</div>

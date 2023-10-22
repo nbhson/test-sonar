@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~angular-notifier/styles';
+@import './scss/_custom';
+@import './scss/_variable';
+@import './scss/_color';
+@import './scss/_scroll-bar';
+@import './scss/_grid';
+@import './scss/_row';
+@import './scss/_column';
+@import './scss/_margin-padding';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+}

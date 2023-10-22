@@ -1,0 +1,17 @@
+<div fxLayout="column" class="cs-p-3 cs-full-width">
+  <div fxLayout="row" class="cs-mb-3" fxFlex="0 0 auto">
+    <app-statistical
+      [dataSource]="dataSource"
+      [users]="users"
+      (updateDadasource)="updateDadasource($event)"
+      class="cs-full-width"
+    ></app-statistical>
+  </div>
+  <div fxLayout="row" fxFlex fxFlex="1 1 auto">
+    <app-user-table
+      [users]="users"
+      (dataSourceChanges)="dataSourceChanges($event)"
+      class="cs-full-width"
+    ></app-user-table>
+  </div>
+</div>

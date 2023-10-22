@@ -1,0 +1,72 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="cs-full-height cs-relative">
+  <div
+    fxLayoutAlign="center center"
+    fxLayoutAlign.lg="center center"
+    fxLayoutAlign.md="center center"
+    fxLayoutAlign.sm="center center"
+    fxLayout="row"
+    class="cs-full-width content cs-white-background"
+  >
+    <mat-card
+      class="cs-card cs-shadow-lg card-login"
+      fxFlex="350px"
+      fxFlex.lg="550px"
+      fxFlex.md="450px"
+      fxFlex.sm="350px"
+    >
+      <mat-card-title>Đăng Nhập</mat-card-title>
+      <mat-card-subtitle>Đăng nhập để trãi nghiệm những khoảnh khắc tuyệt vời nhé!</mat-card-subtitle>
+      <form [formGroup]="form">
+        <mat-form-field class="cs-full-width" appearance="outline">
+          <mat-label>Tên tài khoản</mat-label>
+          <input
+            type="text"
+            [(ngModel)]="userName"
+            autocomplete="off"
+            matInput
+            placeholder="Nhập tên tài khoản"
+            formControlName="userName"
+            required
+          />
+          <mat-error *ngIf="f['userName'].errors">
+            <div *ngIf="f['userName'].errors['required']">Tên tài khoản là bắt buộc!</div>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="cs-full-width" appearance="outline">
+          <mat-label>Mật khẩu</mat-label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            autocomplete="off"
+            matInput
+            placeholder="Nhập mật khẩu"
+            formControlName="password"
+            #passwordInput
+            required
+          />
+          <mat-icon matSuffix (click)="togglePassword()" class="eye">remove_red_eye</mat-icon>
+          <mat-error *ngIf="f['password'].errors">
+            <div *ngIf="f['password'].errors['required']">Mật khẩu là bắt buộc!</div>
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="errMsg || loading">
+          <div class="cs-pt-1 cs-pb-3">
+            <app-error-message [loading]="loading" [errMsg]="errMsg"></app-error-message>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <button mat-raised-button color="primary" (click)="submit()">Đăng nhập</button>
+          <span class="cs-pl-2">
+            Chưa có tài khoản?
+            <a routerLink="/auth/register" class="cs-a-link">Đăng kí</a>
+          </span>
+        </div>
+      </form>
+      <div fxLayout fxLayoutAlign="center">
+        <mat-divider class="cs-mt-3"></mat-divider>
+        <a routerLink="/" class="cs-a-link back-home">Về trang chủ</a>
+      </div>
+    </mat-card>
+  </div>
+</div>

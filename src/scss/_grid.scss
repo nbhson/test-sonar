@@ -1,0 +1,6 @@
+/* GRID CHIẾM HẾT LUÔN CHIỀU NGANG */
+.cs-grid {
+  width: 100%;
+  display: block; /* xài cho những thẻ không có tính chất block thì khi xài grid này nó vẫn chiếm đủ 100% chiều ngang*/
+  padding: 0; /* tránh ảnh hưởng đến kích thước grid sau này*/
+}

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Xóa danh mục</h2>
+<mat-dialog-content>
+  Bạn có chắc muốn xóa danh mục này:
+  <span class="cs-error-color">{{ category.name }}</span> ?
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center" class="cs-pt-3 cs-pb-3">
+  <div fxLayout="column">
+    <app-error-message *ngIf="errMsg || loading" [loading]="loading" [errMsg]="errMsg"></app-error-message>
+  </div>
+
+  <div>
+    <button mat-button mat-dialog-close>Đóng</button>
+    <button mat-button mat-stroked-button color="warn" (click)="submit()">Xóa</button>
+  </div>
+</mat-dialog-actions>

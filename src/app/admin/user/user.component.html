@@ -1,0 +1,46 @@
+<div fxLayout="row" class="cs-full-height">
+  <div fxFlex fxLayout="column" class="content">
+    <!-- Toggle -->
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="cs-shadow-sm cs-white-background">
+      <span></span>
+      <span
+        class="cs-mr-3 mat-headline cs-head-tool-bar"
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="16px"
+      >
+        <span>Quản lí người dùng</span>
+        <mat-icon matTooltip="Refresh" matTooltipPosition="below" class="cs-icon" (click)="getAllUser()"
+          >refresh
+        </mat-icon>
+      </span>
+    </div>
+
+    <!-- View Container -->
+    <view-container
+      class="view-container"
+      *ngIf="view$ | async as view"
+      [appViewMain]="mainTmp"
+      [errorTmp]="errorTmp"
+      [loaderTmp]="loaderTmp"
+      [view]="view"
+    >
+    </view-container>
+
+    <!-- Loading -->
+    <ng-template #loaderTmp>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <app-loading fxLayout="row" fxFlex></app-loading>
+    </ng-template>
+
+    <!-- Success -->
+    <ng-template #mainTmp let-model="view">
+      <app-container fxLayout="row" fxFlex [users]="model.data"></app-container>
+    </ng-template>
+
+    <!-- Error -->
+    <ng-template #errorTmp let-error="view">
+      <app-error fxLayout="row" fxFlex [error]="error.error.message"></app-error>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{ category.name }}</h2>
+<mat-dialog-content>
+  <div fxLayout="row" *ngIf="category.image">
+    <img [src]="category.image" alt="" class="cs-full-width cs-shadow-sm" />
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" class="cs-pt-3 cs-pb-3">
+  <button mat-button mat-dialog-close>Đóng</button>
+</mat-dialog-actions>

@@ -1,0 +1,20 @@
+<div class="card-container cs-mt-3">
+  <mat-card class="cs-shadow-sm slide-show">
+    <button #previous mat-button class="btn-previous">
+      <mat-icon style="color: white">undo</mat-icon>
+    </button>
+    <button #next mat-button class="btn-next">
+      <mat-icon style="color: white">redo</mat-icon>
+    </button>
+    <div class="slide-wrapper">
+      <div *ngFor="let image of images; let i = index">
+        <div
+          class="slide"
+          *ngIf="i === currentIndex"
+          [@imageChange]="currentDirection"
+          [style.background-image]="'url(' + image + ')'"
+        ></div>
+      </div>
+    </div>
+  </mat-card>
+</div>

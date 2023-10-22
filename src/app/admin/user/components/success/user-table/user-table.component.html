@@ -1,0 +1,65 @@
+<div fxLayout="column" fxFill>
+  <div height="60px" fxFlex="0 1 auto"></div>
+
+  <div class="cs-table cs-shadow-sm" fxFlex="1 1 auto" fxLayout="column">
+    <div fxFlex="1 1 auto" class="cs-table-content">
+      <div class="cs-table-wrap">
+        <div *ngIf="users && users.length === 0" fxFlex fxLayout="column" fxLayoutAlign="center center">
+          <span *ngIf="users && users.length === 0">Chưa có người dùng nào trong hệ thống!</span>
+        </div>
+        <div class="cs-table-wrap" [hidden]="users && users.length === 0">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            matSort
+            class="cs-full-width"
+            matSortActive="createdAt"
+            matSortDirection="desc"
+            matSortDisableClear
+          >
+            <ng-container matColumnDef="userName" sticky>
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>Tên tài khoản</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.userName }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>Tên</th>
+              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="role">
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>Loại người dùng</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-chip-list aria-label="Fish selection">
+                  <mat-chip color="primary" [selected]="element.role === 'admin' ? true : false">{{
+                    element.role
+                  }}</mat-chip>
+                </mat-chip-list>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdAt" stickyEnd>
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>Ngày tạo</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.displayCreatedAt }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row wrap">
+      <mat-paginator
+        class="cs-full-width cs-table-paginate"
+        height="60"
+        [pageSizeOptions]="[10, 25, 50, 100]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

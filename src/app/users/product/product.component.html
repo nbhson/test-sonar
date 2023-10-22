@@ -1,0 +1,49 @@
+<div class="cs-mt-4">
+  <app-box header="Sản phẩm">
+    <div *ngIf="isProductsPage; else asHome">
+      <div *ngFor="let product of products">
+        <mat-card class="card-product cs-shadow-sm" style="width: 250px">
+          <img mat-card-image [src]="product.image" />
+          <mat-card-content>
+            <h3>{{ product.name }}</h3>
+            <p class="price">
+              {{ displayPrice(product.price) }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button (click)="navigate(product._id)" mat-raised-button color="accent">Chi Tiết</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <ng-template #asHome>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div *ngFor="let product of products | slice: 0:4">
+          <mat-card class="card-product cs-shadow-sm" style="width: 250px">
+            <img mat-card-image [src]="product.image" />
+            <mat-card-content>
+              <div fxLayout fxLayoutAlign="space-between center">
+                <h3>{{ product.name }}</h3>
+                <div>
+                  <mat-icon color="warn" matTooltip="Thêm vào giỏ hàng" matTooltipPosition="above" class="cs-mr-3"
+                    >add_shopping_cart</mat-icon
+                  >
+                  <mat-icon color="primary" matTooltip="Mua ngay" matTooltipPosition="above">credit_card</mat-icon>
+                </div>
+              </div>
+              <p class="price">
+                {{ displayPrice(product.price) }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button (click)="navigate(product._id)" mat-raised-button color="accent">Chi Tiết</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <div style="padding: 16px 16px" fxLayout fxLayoutAlign="end center">
+        <a routerLink="products" class="more">>> Xem tất cả</a>
+      </div>
+    </ng-template>
+  </app-box>
+</div>

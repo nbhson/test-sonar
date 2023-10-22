@@ -1,0 +1,12 @@
+<div fxLayout="row" class="cs-full-height">
+  <mat-sidenav-container class="cs-full-width">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+      <app-tool-bar></app-tool-bar>
+    </mat-sidenav>
+    <mat-sidenav-content class="cs-relative">
+      <app-toggle-tool-bar class="cs-absolute position" (openedChanges)="openedChanges($event)"></app-toggle-tool-bar>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
